@@ -1,0 +1,782 @@
+{
+	"info": {
+		"_postman_id": "170315a7-a1b3-4e87-98f5-a8b259552859",
+		"name": "carDealership",
+		"description": "allows to maintain different dealerships data like-(cars, deals, soldvehicles, users and dealership)\n\na token is required wherever authention is needed.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28384980"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "adminlogin?admin_id=admin1&password=123",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "queryParams",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/adminlogin?admin_id=admin1&password=123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"adminlogin"
+							],
+							"query": [
+								{
+									"key": "admin_id",
+									"value": "admin1"
+								},
+								{
+									"key": "password",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "admin allows to login with correct login_id and password details"
+		},
+		{
+			"name": "car",
+			"item": [
+				{
+					"name": "getAllCar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDExOjQwOjMyIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTI3MzYzMn0.Ijd3i68fzo6Lez1MONacNUjvJAKKIX1qQ2Y5hPda-gg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/getAllCar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getAllCar"
+							]
+						},
+						"description": "this api will display all the cars that are available in the carDealership database"
+					},
+					"response": []
+				},
+				{
+					"name": "getDealershipByCar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVHVlIEp1bCAxMSAyMDIzIDEyOjA3OjA5IEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkxMDI0MzF9.EmNYJwC7ZS90-fr3CjiH4yohXrVlqq0F10wjZ0qGJ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getDealershipByCar?carId=c1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getDealershipByCar"
+							],
+							"query": [
+								{
+									"key": "carId",
+									"value": "c1"
+								}
+							]
+						},
+						"description": "this api will display car belongs to which delearship by car_id"
+					},
+					"response": []
+				},
+				{
+					"name": "getCarsByDealership",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/getCarsByDealership?dealershipId=dealership_id1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getCarsByDealership"
+							],
+							"query": [
+								{
+									"key": "dealershipId",
+									"value": "dealership_id1"
+								}
+							]
+						},
+						"description": "this api will show all the cars a dealership have"
+					},
+					"response": []
+				},
+				{
+					"name": "getDealsByDealership?dealership_id=dealership_id1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getDealsByDealership?dealership_id=dealership_id1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getDealsByDealership"
+							],
+							"query": [
+								{
+									"key": "dealership_id",
+									"value": "dealership_id1"
+								}
+							]
+						},
+						"description": "this api show all the deals of a dealership_id"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllDealsByCar?car_id=c1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getAllDealsByCar?car_id=c1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getAllDealsByCar"
+							],
+							"query": [
+								{
+									"key": "car_id",
+									"value": "c1"
+								}
+							]
+						},
+						"description": "this api shows all deals of a certain car_id"
+					},
+					"response": []
+				},
+				{
+					"name": "saveCar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"kulcar\", \r\n    \"model\": \"bmw\",\r\n    \"car_id\": \"c999\" , \r\n    \"type\": \"electric\",\r\n    \"car_info\": \"created by api\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/saveCar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"saveCar"
+							]
+						},
+						"description": "this api save new car to the carDealership database"
+					},
+					"response": []
+				}
+			],
+			"description": "maintains all cars data among carDealerships database such as adding a new car , get all the cars from database"
+		},
+		{
+			"name": "deal",
+			"item": [
+				{
+					"name": "getAllDeal",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getAllDeal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getAllDeal"
+							]
+						},
+						"description": "this api shows all the deals in all dealerships"
+					},
+					"response": []
+				}
+			],
+			"description": "maintains different dealerships deals"
+		},
+		{
+			"name": "dealership",
+			"item": [
+				{
+					"name": "saveDealership",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/saveDealership",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"saveDealership"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+									"disabled": true
+								}
+							]
+						},
+						"description": "this api will save a new dealership in the dealerships database"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllDealership",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiU2F0IEp1bCAxNSAyMDIzIDA3OjE4OjA4IEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTQzMDY4OH0.WBVv4CVs0BQAmLw4LhIuh3j9vF4EX6cy6umQswtVDoA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getAllDealership",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getAllDealership"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "this api will show all the dealerships data"
+					},
+					"response": []
+				},
+				{
+					"name": "getSoldCarsByDealership?dealership_id=dealership_id1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getSoldCarsByDealership?dealership_id=dealership_id1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getSoldCarsByDealership"
+							],
+							"query": [
+								{
+									"key": "dealership_id",
+									"value": "dealership_id1"
+								}
+							]
+						},
+						"description": "this api will show all the sold_vehicles a dealership has sold"
+					},
+					"response": []
+				},
+				{
+					"name": "getDealsByDealership?dealership_id=dealership_id1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDExOjQwOjMyIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTI3MzYzMn0.Ijd3i68fzo6Lez1MONacNUjvJAKKIX1qQ2Y5hPda-gg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getDealsByDealership?dealership_id=dealership_id1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getDealsByDealership"
+							],
+							"query": [
+								{
+									"key": "dealership_id",
+									"value": "dealership_id1"
+								}
+							]
+						},
+						"description": "this api will show all the deals of a certain dealership"
+					},
+					"response": []
+				},
+				{
+					"name": "getSoldVehiclesByDealership?dealership_id=dealership_id1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDExOjQwOjMyIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTI3MzYzMn0.Ijd3i68fzo6Lez1MONacNUjvJAKKIX1qQ2Y5hPda-gg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getSoldVehiclesByDealership?dealership_id=dealership_id1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getSoldVehiclesByDealership"
+							],
+							"query": [
+								{
+									"key": "dealership_id",
+									"value": "dealership_id1"
+								}
+							]
+						},
+						"description": "this api will show all sold_vehicles of a certain dealership by their dealership_id"
+					},
+					"response": []
+				},
+				{
+					"name": "addDealsToDealership",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDExOjQwOjMyIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTI3MzYzMn0.Ijd3i68fzo6Lez1MONacNUjvJAKKIX1qQ2Y5hPda-gg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dealership_id\":\"dealership_id1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/addDealsToDealership",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addDealsToDealership"
+							]
+						},
+						"description": "this api add new deals in a certain dealership by their dealership_id"
+					},
+					"response": []
+				},
+				{
+					"name": "addCarsToDealership",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDExOjQwOjMyIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTI3MzYzMn0.Ijd3i68fzo6Lez1MONacNUjvJAKKIX1qQ2Y5hPda-gg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dealership_id\":\"dealership_id1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/addCarsToDealership",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addCarsToDealership"
+							]
+						},
+						"description": "this api add new cars in a dealership by their dealership_id"
+					},
+					"response": []
+				}
+			],
+			"description": "maintains dealerships data\n\ncontains all the data of dealerships"
+		},
+		{
+			"name": "soldVehicle",
+			"item": [
+				{
+					"name": "saveSoldvehicles",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiU2F0IEp1bCAxNSAyMDIzIDA3OjE4OjA4IEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTQzMDY4OH0.WBVv4CVs0BQAmLw4LhIuh3j9vF4EX6cy6umQswtVDoA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/saveSoldvehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"saveSoldvehicles"
+							]
+						},
+						"description": "save a new soldvehicle in database"
+					},
+					"response": []
+				},
+				{
+					"name": "saveNewSoldvehicleToDealership",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"dealership_id\":\"dealership_id1\",\r\n  \"deal_id\":\"d1\",\r\n  \"user_id\":\"u1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/saveNewSoldvehicleToDealership?dealership_id=dealership_id1&deal_id=d1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"saveNewSoldvehicleToDealership"
+							],
+							"query": [
+								{
+									"key": "dealership_id",
+									"value": "dealership_id1"
+								},
+								{
+									"key": "deal_id",
+									"value": "d1"
+								},
+								{
+									"key": "user_id",
+									"value": "u1",
+									"disabled": true
+								}
+							]
+						},
+						"description": "this api save new sold vehicle using dealership_id"
+					},
+					"response": []
+				},
+				{
+					"name": "getSoldVehiclesByUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getSoldVehiclesByUser?userId=u1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getSoldVehiclesByUser"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "u1"
+								}
+							]
+						},
+						"description": "show all sold vehicles of a user by user_id"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllSoldvehicles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDExOjQwOjMyIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTI3MzYzMn0.Ijd3i68fzo6Lez1MONacNUjvJAKKIX1qQ2Y5hPda-gg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getAllSoldvehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getAllSoldvehicles"
+							]
+						},
+						"description": "show all the sold vehicles that are in carDealership database"
+					},
+					"response": []
+				}
+			],
+			"description": "maintains all the data of soldvehicles in database"
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "saveUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDEzOjE1OjQzIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwidXNlciI6eyJfaWQiOiI2NGE5OTQxZmJiOGM2OTYxNzcwYmM3OGMiLCJ1c2VyX2luZm8iOiJ1c2VyX25hbWUxIiwidXNlcl9lbWFpbCI6IlVzZXIxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiJ1MSIsInBhc3N3b3JkIjoicGFzc3dvcmQxIiwidXNlcl9sb2NhdGlvbiI6InVzZXJjaXR5MSIsInZlaGljbGVfaW5mbyI6WyJ2MSIsInYyIixudWxsLHsidmVoaWNsZV9pZCI6InY5MiIsImNhcl9pZCI6ImM5OSIsInZlaGljbGVfaW5mbyI6InZlaGljbGUxNyJ9LG51bGwsbnVsbCxudWxsLG51bGxdLCJfX3YiOjZ9LCJpYXQiOjE2ODkyNzkzNDN9.G-PnmEuEi0oxIlwCdtLQzgvFB68pryRsw2uDxSWI9LU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/saveUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"saveUser"
+							]
+						},
+						"description": "save a new user in the carDealership database"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDExOjQwOjMyIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTI3MzYzMn0.Ijd3i68fzo6Lez1MONacNUjvJAKKIX1qQ2Y5hPda-gg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/getAllUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"getAllUser"
+							]
+						},
+						"description": "show all users of carDealership database"
+					},
+					"response": []
+				},
+				{
+					"name": "login?user_info=user_name1&password=password1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiVGh1IEp1bCAxMyAyMDIzIDExOjQwOjMyIEdNVC0wNzAwIChQYWNpZmljIERheWxpZ2h0IFRpbWUpIiwiYWRtaW5JZCI6MSwidXNlck5hbWUiOiJhZG1pbiIsImlhdCI6MTY4OTI3MzYzMn0.Ijd3i68fzo6Lez1MONacNUjvJAKKIX1qQ2Y5hPda-gg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/login?user_info=user_name1&password=password1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "user_info",
+									"value": "user_name1"
+								},
+								{
+									"key": "password",
+									"value": "password1"
+								}
+							]
+						},
+						"description": "let user login by user_name and password\n\ndisplay user login successfully once user enter correct user_info and password that are stored in user database"
+					},
+					"response": []
+				}
+			],
+			"description": "maintains user data in database"
+		}
+	]
+}
